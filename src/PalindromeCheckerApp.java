@@ -1,8 +1,35 @@
-public class PalindromeCheckerApp {
+import java.util.Scanner;
+
+public class UseCase9PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        System.out.println("Palindrome Checker Application Started");
+        Scanner sc = new Scanner(System.in);
 
+        System.out.println("===== UC9 : Recursive Palindrome Check =====");
+        System.out.print("Enter a string: ");
+
+        String input = sc.nextLine();
+
+        boolean result = check(input, 0, input.length() - 1);
+
+        if (result)
+            System.out.println("Result : Palindrome ✅");
+        else
+            System.out.println("Result : Not Palindrome ❌");
+
+        sc.close();
+    }
+
+    // recursive function
+    private static boolean check(String s, int start, int end) {
+
+        if (start >= end)
+            return true;
+
+        if (s.charAt(start) != s.charAt(end))
+            return false;
+
+        return check(s, start + 1, end - 1);
     }
 }
